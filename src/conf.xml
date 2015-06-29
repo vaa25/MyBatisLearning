@@ -5,7 +5,7 @@
 <configuration>
     <properties resource="postgres.properties" />
     <typeHandlers>
-        <typeHandler handler="com.vaa25.postgis.ExampleTypeHandler"/>
+        <typeHandler handler="com.vaa25.postgis.PointTypeHandler"/>
     </typeHandlers>
     <environments default="development">
         <environment id="development">

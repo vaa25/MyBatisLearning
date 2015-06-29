@@ -6,7 +6,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.postgis.Point;
-import org.postgresql.PGConnection;
 
 import java.io.Reader;
 import java.util.List;
@@ -24,8 +23,8 @@ public class Start {
             SqlSessionFactory sqlSessionFactory =  new SqlSessionFactoryBuilder().build(reader);
             // Инициализируем сессию
             SqlSession session = sqlSessionFactory.openSession();
-//            printMaster(session);
 
+//            printMaster(session);
             printOnePoint(session);
             System.out.println();
             printAllPoints(session);
@@ -38,20 +37,20 @@ public class Start {
         }
     }
 
-    private static void printMaster(SqlSession session) {
-        // Выполняем запрос
-        Master master = session.selectOne("masterMapper.selectMaster",1);
-
-//            Выводим результаты на консоль
-        System.out.println("ID: "+master.getId()+", Name: "+master.getName());
-        List<Detail> list = master.getDetails();
-        for (Detail detail : list)
-        {
-            System.out.println("  detail: "+detail.getId()+" - "+detail.getName());
-            List<Subdetail> list1 = detail.getSubdetails();
-            for (Subdetail subdetail : list1) System.out.println("    subdetail: "+subdetail.getName());
-        }
-    }
+//    private static void printMaster(SqlSession session) {
+//        // Выполняем запрос
+//        Master master = session.selectOne("masterMapper.selectMaster",1);
+//
+////            Выводим результаты на консоль
+//        System.out.println("ID: "+master.getId()+", Name: "+master.getName());
+//        List<Detail> list = master.getDetails();
+//        for (Detail detail : list)
+//        {
+//            System.out.println("  detail: "+detail.getId()+" - "+detail.getName());
+//            List<Subdetail> list1 = detail.getSubdetails();
+//            for (Subdetail subdetail : list1) System.out.println("    subdetail: "+subdetail.getName());
+//        }
+//    }
 
     private static void printOnePoint(SqlSession session) {
         Points points= session.selectOne("postgisMapper.selectPoints", 2);
