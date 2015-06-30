@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="postgisMapper">
-    <resultMap id="pointsResult" type="com.vaa25.postgis.Points">
+    <resultMap id="pointsResult" type="Points">
         <result property="id" column="id" jdbcType="NUMERIC"/>
-        <result property="point" column="point" javaType="org.postgis.Point"/>
+        <result property="point" column="point" javaType="Point"/>
         <result property="description" column="description" jdbcType="VARCHAR"/>
     </resultMap>
     
@@ -18,7 +18,7 @@
         select * from POINTS
     </select>
 
-    <select id="selectRadiusPoints" parameterType="com.vaa25.postgis.SelectRadiusPointsParameter" resultMap="pointsResult">
+    <select id="selectRadiusPoints" parameterType="SelectRadiusPointsParameter" resultMap="pointsResult">
         SELECT * FROM points WHERE ST_DWithin(point, #{center}, #{radius});
     </select>
 </mapper>

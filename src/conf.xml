@@ -4,6 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <properties resource="postgres.properties" />
+    <typeAliases>
+        <typeAlias alias="Points" type="com.vaa25.postgis.Points"/>
+        <typeAlias alias="SelectRadiusPointsParameter" type="com.vaa25.postgis.SelectRadiusPointsParameter"/>
+        <typeAlias alias="Point" type="org.postgis.Point"/>
+    </typeAliases>
     <typeHandlers>
         <typeHandler handler="com.vaa25.postgis.PointTypeHandler"/>
     </typeHandlers>
